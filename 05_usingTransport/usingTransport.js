@@ -195,10 +195,6 @@ const cymPart = new Tone.Sequence(function (time, note) {
 const snarePart = new Tone.Sequence(function (time, note) {
   snareSynth.triggerAttackRelease(note, '16n', time, 1);
 
-  // Tone.Draw.schedule(() => {
-  //   fill('red')
-  //   ellipse(width / 2, height / 2, 100);
-  // }, time)
 }, snareNotes, '4n')
 
 
@@ -236,10 +232,6 @@ function draw() {
   fill('white');
   var x = map(drumSynth.envelope.value, 0, 1, 0, 200);
   ellipse(200, 200, x);
-
-  fill('red')
-  var y = map(snareSynth.envelope.value, 0, 1, 0, 400);
-  ellipse(200, 200, y);
 
 }
 

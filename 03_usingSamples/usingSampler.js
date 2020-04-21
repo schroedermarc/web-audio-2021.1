@@ -2,7 +2,7 @@
 // controls
 /////////////////////
 let drawWave = true;
-let effectOn = true;
+let effectOn = false;
 let octave = 3;
 
 
@@ -42,10 +42,10 @@ let synthSettings = {
 };
 
 let delaySettings = {
-  delayTime: 0.25,
+  delayTime: 0.1,
   maxDelay: 1,
   wet: 0.5,
-  feedback: 0.8
+  feedback: 0.2
 }
 
 
@@ -74,7 +74,7 @@ function setup() {
   fft = new Tone.FFT(256).toMaster();
   wave = new Tone.Waveform(256).toMaster();
   sampler = new Tone.Sampler({
-    "C3": "../samples/creepy.ogg",
+    "C3": "../samples/duck.mp3",
   }, {
     "volume": -5
   })
