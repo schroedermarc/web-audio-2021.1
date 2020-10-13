@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>new</title>
+
+    <script src="../../libraries/p5.js"></script>
+    <script src="../../libraries/p5.dom.js"></script>
+    <script src="../../libraries/p5.sound.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js"></script>
+    <!-- here's where we add the new tonal library -->
+    <script src="https://cdn.jsdelivr.net/npm/@tonaljs/tonal/browser/tonal.min.js"></script>
+    <!--  -->
+    <!-- <script src="../utils/theoryHelper.js"></script> -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Lato:wght@300;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- #f3e79b,#fac484,#f8a07e,#eb7f86,#ce6693,#a059a0,#5c53a5 -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #5c53a5;
+        font-family: 'Lato', sans-serif;
+      }
+
+      canvas {
+        margin: auto;
+      }
+
+      #vanity-border {
+        border: 10px solid #a059a0;
+        box-sizing: border-box;
+        max-width: 800px;
+        margin: 0 auto;
+        margin-top: 60px;
+        border-radius: 30px;
+      }
+
+      #arp-container {
+        border: 10px solid #ce6693;
+
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 30px;
+        border-radius: 20px;
+
+        background-color: #f8a07e;
+      }
+
+      #arp-container > div {
+        margin-bottom: 30px;
+      }
+      #arp-container > div:last-of-type {
+        margin-bottom: 0px;
+      }
+
+      #title-container {
+        color: #f3e79b;
+        font-family: 'Alex Brush', cursive;
+        font-size: 66px;
+      }
+
+      #controls-container {
+        display: flex;
+        flex-flow: row;
+        margin: 10px 10px;
+        border: 1px solid #fac484;
+        box-sizing: border-box;
+        padding: 15px;
+        border-radius: 15px;
+      }
+
+      #controls-container > * {
+        margin-right: 30px;
+      }
+
+      #start-stop-container {
+        display: flex;
+      }
+      #start-stop-container > div {
+        background-color: #ce6693;
+        box-sizing: border-box;
+        padding: 5px 20px;
+        margin: 0px 20px;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      button {
+        margin-left: 5px;
+      }
+
+      #chord-button-container {
+        display: flex;
+      }
+
+      #chord-button-container > .chord-button {
+        box-sizing: border-box;
+        padding: 5px;
+        margin: 0px 3px;
+        cursor: pointer;
+        background-color: #f3e79b;
+      }
+
+      #chord-button-container > .chord-button.selected {
+        background-color: #a059a0;
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="vanity-border">
+      <div id="arp-container">
+        <div id="title-container">
+          <span>Arp Machine</span>
+        </div>
+        <div id="controls-container">
+          <div>
+            <label>Root: </label>
+            <select class="root-selector" id="root-selector">
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+              <option value="G">G</option>
+              <option value="Ab">Ab</option>
+              <option value="Bb">Bb</option>
+              <option value="Db">Db</option>
+              <option value="Eb">Eb</option>
+              <option value="Gb">Gb</option>
+            </select>
+          </div>
+          <div>
+            <label for="">Key: </label>
+            <select name="key-selector" id="key-selector">
+              <option value="Major">Major</option>
+              <option value="Minor">Minor</option>
+            </select>
+          </div>
+          <div>
+            <span> Octave: <span id="octave-num">3</span> </span>
+            <button id="plus-button">+</button>
+            <button id="minus-button">-</button>
+          </div>
+          <div>
+            <label for="">BPM: </label>
+            <input
+              type="range"
+              name="bpm-selector"
+              id="bpm-selector"
+              min="75"
+              max="200"
+              value="128"
+            />
+          </div>
+        </div>
+        <div id="start-stop-container">
+          <div id="start-button">Start</div>
+          <div id="stop-button">Stop</div>
+        </div>
+        <div class="chord-button-container" id="chord-button-container"></div>
+        <div>
+          <label for="">Pattern</label>
+          <select name="pattern-selector" id="pattern-selector">
+            <option value="up">up</option>
+            <option value="down">down</option>
+            <option value="upDown">upDown</option>
+            <option value="downUp">downUp</option>
+            <option value="alternateUp">alternateUp</option>
+            <option value="alternateDown">alternateDown</option>
+            <option value="random">random</option>
+            <option value="randomOnce">randomOnce</option>
+            <option value="randomWalk">randomWalk</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <script src="arpMachine.js"></script>
+  </body>
+</html>
