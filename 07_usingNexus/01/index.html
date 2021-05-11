@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/13.0.1/Tone.min.js"></script>
+    <script src="../utils/theoryHelper.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nexusui@latest/dist/NexusUI.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <title>07 Using Nexus</title>
+  </head>
+
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    #container {
+      margin: 0 auto;
+      margin-top: 50px;
+      width: fit-content;
+
+      display: flex;
+      flex-flow: row;
+    }
+
+    #dial-container {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 0px 10px 0px 10px;
+    }
+  </style>
+  <body>
+    <div id="container">
+      <div id="piano"></div>
+      <div id="dial-container">
+        <div>Volume:</div>
+        <div id="dial"></div>
+      </div>
+    </div>
+  </body>
+  <script src="usingNexus.js"></script>
+</html>

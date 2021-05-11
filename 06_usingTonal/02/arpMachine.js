@@ -37,27 +37,27 @@ const synthSettings = {
     rolloff: -48,
   },
   envelope: {
-    attack: 0.04,
+    attack: 0.03,
     decay: 0.0,
-    sustain: 0.1,
-    release: 4,
+    sustain: 0.05,
+    release: 0.2,
   },
   filterEnvelope: {
     attack: 0.02,
     decay: 0,
-    sustain: 1,
-    release: 0.3,
-    baseFrequency: 600,
+    sustain: 0.05,
+    release: 0.2,
+    baseFrequency: 100,
     octaves: 7,
-    exponent: 5,
+    exponent: 8,
   },
 }
 
 const delaySettings = {
-  delayTime: '16n',
+  delayTime: '8n',
   maxDelay: 1,
-  wet: 0.5,
-  feedback: 0.73,
+  wet: 0.3,
+  feedback: 0.53,
 }
 
 const convolverSettings = { url: '../../samples/space.wav', wet: 0.3 }
@@ -95,7 +95,7 @@ function setup() {
   // // routing
   if (effectOn) {
     // effect flag is on(true)
-    synth.chain(delay, convolver, fft, wave, Tone.Master)
+    synth.chain(convolver, delay, fft, wave, Tone.Master)
   } else {
     // effect flag is off (false)
     synth.chain(fft, wave, Tone.Master)

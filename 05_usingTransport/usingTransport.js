@@ -189,7 +189,9 @@ const kicksPart = new Tone.Sequence(function (time, note) {
 }, kicks, "4n")
 
 const cymPart = new Tone.Sequence(function (time, note) {
-  sampler.triggerAttackRelease(note, '32n', time, 1);
+  if (sampler.loaded){
+    sampler.triggerAttackRelease(note, '32n', time, 1);
+  }
 }, cymNotes, "4n");
 
 const snarePart = new Tone.Sequence(function (time, note) {

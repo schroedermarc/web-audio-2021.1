@@ -2,10 +2,10 @@
 // controls
 /////////////////////
 let drawWave = true;
-let effectOn = true;
+let effectOn = false;
 let octave = 3;
 
-let synth, delay, autoFilter;
+let synth, delay, autoFilter, convolver;
 let wave;
 let select;
 let isFFT = false;
@@ -15,7 +15,7 @@ const synthSettings = {
   frequency: 'C7',
   detune: 0,
   oscillator: {
-    type: 'sawtooth', //sine, sawtooth, triangle
+    type: 'sine', //sine, sawtooth, triangle
   },
   filter: {
     Q: 1,
@@ -29,7 +29,7 @@ const synthSettings = {
     release: 4,
   },
   filterEnvelope: {
-    attack: 3,
+    attack: 0.2,
     decay: 1,
     sustain: 0.5,
     release: 1,
@@ -68,21 +68,25 @@ function setup() {
   synth = new Tone.MonoSynth(synthSettings);
   delay = new Tone.FeedbackDelay(delaySettings);
   autoFilter = new Tone.Chorus({});
+  convolver = new Tone.Convolver({
+    url: "../samples/Space.wav",
+    wet: 0.5
+  });
   fft = new Tone.FFT(256); //.toMaster();
   wave = new Tone.Waveform(256); //.toMaster();
 
   // // routing
   if (effectOn) {
-    synth.connect(autoFilter);
-    autoFilter.connect(fft);
-    fft.connect(wave);
-    wave.toMaster();
-    // synth.chain(autoFilter, fft, wave, Tone.Master);
+    // synth.connect(autoFilter);
+    // autoFilter.connect(fft);
+    // fft.connect(wave);
+    // wave.toMaster();
+    synth.chain(convolver, fft, wave, Tone.Master);
   } else {
-    synth.connect(fft);
-    synth.connect(wave);
-    wave.toMaster();
-    // synth.chain(fft, wave, Tone.Master);
+    // synth.connect(fft);
+    // synth.connect(wave);
+    // wave.toMaster();
+    synth.chain(fft, wave, Tone.Master);
   }
 }
 

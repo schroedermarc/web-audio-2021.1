@@ -71,7 +71,7 @@ function draw() {
 
   isRecording ? fill('red') : fill('white');
   noStroke();
-  ellipse(width / 2, height / 2, map(meter.getLevel(), -60, 0, 0, 100))
+  ellipse(width / 2, height / 2, map(meter.getLevel(), -60, 0, 0, 400))
 }
 
 

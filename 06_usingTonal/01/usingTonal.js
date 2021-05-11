@@ -2,7 +2,7 @@
 // controls
 /////////////////////
 let drawWave = true
-let effectOn = true
+let effectOn = false
 let isFFT = false
 let octave = 3
 
@@ -81,7 +81,7 @@ function setup() {
   // create tone elements
   synth = new Tone.MonoSynth(synthSettings)
   delay = new Tone.FeedbackDelay(delaySettings)
-  convolver = new Tone.Convolver('../samples/space.wav')
+  convolver = new Tone.Convolver('../../samples/space.wav')
   autoFilter = new Tone.Chorus({})
   fft = new Tone.FFT(256) //.toMaster();
   wave = new Tone.Waveform(256) //.toMaster();
