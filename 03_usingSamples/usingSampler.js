@@ -10,36 +10,6 @@ let wave
 let select, octSelect
 let isFFT = false
 
-let synthSettings = {
-  volume: -10, // goes from -80+, 0 is default
-  frequency: 'C4',
-  detune: 0,
-  oscillator: {
-    type: 'sawtooth',
-  },
-  filter: {
-    Q: 4,
-    type: 'lowpass',
-    rolloff: -12,
-    frequency: 30,
-  },
-  envelope: {
-    attack: 0.1,
-    decay: 0.9,
-    sustain: 0.9,
-    release: 1,
-  },
-  filterEnvelope: {
-    attack: 1,
-    decay: 0.05,
-    sustain: 0.5,
-    release: 2,
-    baseFrequency: 200,
-    octaves: 7,
-    exponent: 1,
-  },
-}
-
 let delaySettings = {
   delayTime: 0.1,
   maxDelay: 1,
@@ -71,9 +41,7 @@ function setup() {
   wave = new Tone.Waveform(256).toMaster()
   sampler = new Tone.Sampler(
     {
-      C3: '../samples/ringtone.mp3',
-      D3: '../samples/piano.mp3',
-      E3: '../samples/duck.mp3',
+      C3: '../samples/piano.mp3',
     },
     {
       volume: -5,

@@ -16,6 +16,16 @@ var piano = new Nexus.Piano('#piano', {
   highNote: 36,
 })
 
+const filterDial = new Nexus.Dial('#filter-dial', {
+  size: [75, 75],
+  interaction: 'radial', // "radial", "vertical", or "horizontal"
+  mode: 'relative', // "absolute" or "relative"
+  min: 0,
+  max: 10000,
+  step: 0,
+  value: 300,
+})
+
 // tone js
 const synth = new Tone.MonoSynth() // very basic synth
 synth.connect(Tone.Master) // straight into the master speaker
@@ -23,6 +33,10 @@ synth.connect(Tone.Master) // straight into the master speaker
 // events
 dial.on('change', function (value) {
   synth.volume.value = value
+})
+
+filterDial.on('change', function (value) {
+  synth.filterEnvelope.baseFrequency = value
 })
 
 piano.on('change', function (value) {
